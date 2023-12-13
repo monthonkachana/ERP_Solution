@@ -1,0 +1,58 @@
+paths:
+  /api/auth/addSalary:
+    post:
+      summary: "Add Salary"
+      tags:
+        - "Salary"
+      description: "Endpoint to add salary information"
+      responses:
+        200:
+          description: "Salary added successfully"
+
+  /api/ShowSalary/{id}:
+    get:
+      summary: "Show Salary by Employee ID"
+      tags:
+        - "Salary"
+      description: "Endpoint to get salary details by employee ID"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of the employee"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            $ref: "#/definitions/SalaryDetails"
+
+  /api/ShowAllSalary:
+    get:
+      summary: "Show All Salaries"
+      tags:
+        - "Salary"
+      description: "Endpoint to get details of all salaries"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/SalaryDetails"
+
+tags:
+  - name: "Salary"
+    description: "Endpoints related to salary management"
+
+definitions:
+  SalaryDetails:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      employeeId:
+        type: "integer"
+      amount:
+        type: "number"
+

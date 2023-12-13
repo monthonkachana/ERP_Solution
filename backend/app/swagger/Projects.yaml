@@ -1,0 +1,65 @@
+paths:
+  /api/auth/addProjects:
+    post:
+      summary: "Add Project"
+      tags:
+        - "Projects"
+      description: "Endpoint to add a project"
+      responses:
+        200:
+          description: "Project added successfully"
+
+  /api/show/showprojects/{id}:
+    get:
+      summary: "Show Project by ID"
+      tags:
+        - "Projects"
+      description: "Endpoint to get project details by ID"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of the project"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            $ref: "#/definitions/ProjectDetails"
+
+  /api/show/showAllProjects:
+    get:
+      summary: "Show All Projects"
+      tags:
+        - "Projects"
+      description: "Endpoint to get details of all projects"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ProjectDetails"
+
+  /api/auth/addProjectsDetails:
+    post:
+      summary: "Add Project Details"
+      tags:
+        - "Projects"
+      description: "Endpoint to add details to a project"
+      responses:
+        200:
+          description: "Project details added successfully"
+
+tags:
+  - name: "Projects"
+    description: "Endpoints related to projects management"
+
+definitions:
+  ProjectDetails:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"

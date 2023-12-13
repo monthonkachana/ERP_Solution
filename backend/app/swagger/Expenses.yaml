@@ -1,0 +1,70 @@
+paths:
+  /api/auth/addExpense:
+    post:
+      summary: "Add Expense"
+      tags:
+        - "Expenses"
+      description: "Endpoint to add an expense"
+      responses:
+        200:
+          description: "Expense added successfully"
+
+  /api/auth/showExpenseById/{id}:
+    get:
+      summary: "Show Expense by ID"
+      tags:
+        - "Expenses"
+      description: "Endpoint to get expense details by ID"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of the expense"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            $ref: "#/definitions/ExpenseDetails"
+
+  /show/alldetailExpenses:
+    get:
+      summary: "Show All Expenses Details"
+      tags:
+        - "Expenses"
+      description: "Endpoint to get details of all expenses"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ExpenseDetails"
+
+  /show/countexpense:
+    get:
+      summary: "Count All Expenses"
+      tags:
+        - "Expenses"
+      description: "Endpoint to get the total count of expenses"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "integer"
+
+tags:
+  - name: "Expenses"
+    description: "Endpoints related to expenses management"
+
+definitions:
+  ExpenseDetails:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      description:
+        type: "string"
+      amount:
+        type: "number"
+

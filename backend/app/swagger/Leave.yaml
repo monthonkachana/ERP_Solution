@@ -1,0 +1,14 @@
+paths:
+  /api/auth/addLeave:
+    post:
+      summary: "Add Leave"
+      tags:
+        - "Leave"
+      description: "Endpoint to add leave"
+      responses:
+        200:
+          description: "Leave added successfully"
+
+tags:
+  - name: "Leave"
+    description: "Endpoints related to leave management"

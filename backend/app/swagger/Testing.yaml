@@ -1,0 +1,57 @@
+paths:
+  /api/test/all:
+    get:
+      summary: "Public Access"
+      tags:
+        - "Authentication"
+      description: "Endpoint for public access"
+      responses:
+        200:
+          description: "Public access successful"
+
+  /api/test/user:
+    get:
+      summary: "User Access"
+      tags:
+        - "Authentication"
+      description: "Endpoint for user access"
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: "User access successful"
+
+  /api/test/hr:
+    get:
+      summary: "HR Access"
+      tags:
+        - "Authentication"
+      description: "Endpoint for HR access"
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: "HR access successful"
+
+  /api/test/admin:
+    get:
+      summary: "Admin Access"
+      tags:
+        - "Authentication"
+      description: "Endpoint for admin access"
+      security:
+        - JWT: []
+        - Admin: []
+      responses:
+        200:
+          description: "Admin access successful"
+
+securityDefinitions:
+  JWT:
+    type: apiKey
+    in: header
+    name: x-access-token
+  Admin:
+    type: apiKey
+    in: header
+    name: x-access-role

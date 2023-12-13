@@ -1,0 +1,39 @@
+paths:
+  /api/auth/addNotice:
+    post:
+      summary: "Add Notice"
+      tags:
+        - "Notice"
+      description: "Endpoint to add a notice"
+      responses:
+        200:
+          description: "Notice added successfully"
+
+  /api/show/allNotices:
+    get:
+      summary: "Show All Notices"
+      tags:
+        - "Notice"
+      description: "Endpoint to get details of all notices"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/NoticeDetails"
+
+tags:
+  - name: "Notice"
+    description: "Endpoints related to notice management"
+
+definitions:
+  NoticeDetails:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      title:
+        type: "string"
+      content:
+        type: "string"

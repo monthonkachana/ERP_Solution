@@ -1,0 +1,69 @@
+paths:
+  /api/auth/addTask:
+    post:
+      summary: "Add Task"
+      tags:
+        - "Task"
+      description: "Endpoint to add a task"
+      responses:
+        200:
+          description: "Task added successfully"
+
+  /api/show/showTasks/{id}:
+    get:
+      summary: "Show Task by ID"
+      tags:
+        - "Task"
+      description: "Endpoint to get task details by ID"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of the task"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            $ref: "#/definitions/TaskDetails"
+
+  /show/allTasksDetail:
+    get:
+      summary: "Show All Task Details"
+      tags:
+        - "Task"
+      description: "Endpoint to get details of all tasks"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/TaskDetails"
+
+  /show/counttasks:
+    get:
+      summary: "Count All Tasks"
+      tags:
+        - "Task"
+      description: "Endpoint to get the total count of tasks"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "integer"
+
+tags:
+  - name: "Task"
+    description: "Endpoints related to task management"
+
+definitions:
+  TaskDetails:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      description:
+        type: "string"
+      status:
+        type: "string"

@@ -1,0 +1,52 @@
+paths:
+  /api/auth/addEmp:
+    post:
+      summary: "Add Employee"
+      tags:
+        - "Employee"
+      description: "Endpoint to add a new employee"
+      responses:
+        200:
+          description: "Employee added successfully"
+
+  /show/totalempdetails:
+    get:
+      summary: "Get All Employees Details"
+      tags:
+        - "Employee"
+      description: "Endpoint to get details of all employees"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/EmployeeDetails"
+
+  /show/totalempCount:
+    get:
+      summary: "Get Total Employee Count"
+      tags:
+        - "Employee"
+      description: "Endpoint to get the total count of employees"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "integer"
+
+tags:
+  - name: "Employee"
+    description: "Endpoints related to employee management"
+
+definitions:
+  EmployeeDetails:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      department:
+        type: "string"
+

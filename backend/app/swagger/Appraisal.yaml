@@ -1,0 +1,16 @@
+paths:
+  /api/auth/addAppraisal:
+    post:
+      summary: "Add Appraisal"
+      tags:
+        - "Appraisal"
+      description: "Endpoint to add an appraisal"
+      responses:
+        200:
+          description: "Appraisal added successfully"
+
+tags:
+  - name: "Appraisal"
+    description: "Endpoints related to appraisal management"
+
+

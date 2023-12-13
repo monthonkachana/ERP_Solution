@@ -1,0 +1,50 @@
+paths:
+  /api/auth/addDepart:
+    post:
+      summary: "Add Department"
+      tags:
+        - "Department"
+      description: "Endpoint to add a new department"
+      responses:
+        200:
+          description: "Department added successfully"
+
+  /show/totalDpdetail:
+    get:
+      summary: "Get All Department Details"
+      tags:
+        - "Department"
+      description: "Endpoint to get details of all departments"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/DepartmentDetails"
+
+  /show/totalDpCount:
+    get:
+      summary: "Get Total Department Count"
+      tags:
+        - "Department"
+      description: "Endpoint to get the total count of departments"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "integer"
+
+tags:
+  - name: "Department"
+    description: "Endpoints related to department management"
+
+definitions:
+  DepartmentDetails:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+

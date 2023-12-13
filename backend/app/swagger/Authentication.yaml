@@ -1,0 +1,66 @@
+paths:
+  /api/auth/signup:
+    post:
+      summary: "User Registration"
+      tags:
+        - "Authentication"
+      description: "Endpoint for user registration"
+      parameters:
+        - name: "body"
+          in: "body"
+          description: "User registration details"
+          required: true
+          schema:
+            $ref: "#/definitions/UserSignup"
+      responses:
+        200:
+          description: "User registered successfully"
+
+  /api/auth/signin:
+    post:
+      summary: "User Login"
+      tags:
+        - "Authentication"
+      description: "Endpoint for user login"
+      parameters:
+        - name: "body"
+          in: "body"
+          description: "User login details"
+          required: true
+          schema:
+            $ref: "#/definitions/UserSignin"
+      responses:
+        200:
+          description: "User login successful"
+
+definitions:
+  UserSignup:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      roles:
+        type: "array"
+        items:
+          type: "string"
+    required:
+      - username
+      - email
+      - password
+
+  UserSignin:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      password:
+        type: "string"
+    required:
+      - username
+      - password
+
+

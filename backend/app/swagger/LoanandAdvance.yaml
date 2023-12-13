@@ -1,0 +1,43 @@
+paths:
+  /api/auth/loanAndAdvance:
+    post:
+      summary: "Loan and Advance Request"
+      tags:
+        - "Loan and Advance"
+      description: "Endpoint to request loan and advance"
+      responses:
+        200:
+          description: "Loan and Advance request submitted successfully"
+
+  /api/show/showloanAndAdvance/{id}:
+    get:
+      summary: "Show Loan and Advance by Employee ID"
+      tags:
+        - "Loan and Advance"
+      description: "Endpoint to get loan and advance details by employee ID"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of the employee"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            $ref: "#/definitions/LoanAndAdvanceDetails"
+
+tags:
+  - name: "Loan and Advance"
+    description: "Endpoints related to loan and advance management"
+
+definitions:
+  LoanAndAdvanceDetails:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      employeeId:
+        type: "integer"
+      amount:
+        type: "number"

@@ -1,0 +1,77 @@
+paths:
+  /api/auth/addAttendence:
+    post:
+      summary: "Add Attendance"
+      tags:
+        - "Attendance"
+      description: "Endpoint to add attendance"
+      responses:
+        200:
+          description: "Attendance added successfully"
+
+  /api/show/attendencebyid/{id}:
+    get:
+      summary: "Show Attendance by ID"
+      tags:
+        - "Attendance"
+      description: "Endpoint to get attendance details by ID"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of the attendance"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            $ref: "#/definitions/AttendanceDetails"
+
+  /api/show/attendencebyname/{name}:
+    get:
+      summary: "Show Attendance by Name"
+      tags:
+        - "Attendance"
+      description: "Endpoint to get attendance details by employee name"
+      parameters:
+        - name: "name"
+          in: "path"
+          description: "Name of the employee"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            $ref: "#/definitions/AttendanceDetails"
+
+  /api/show/allattendence:
+    get:
+      summary: "Show All Attendance"
+      tags:
+        - "Attendance"
+      description: "Endpoint to get details of all attendance"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/AttendanceDetails"
+
+tags:
+  - name: "Attendance"
+    description: "Endpoints related to attendance management"
+
+definitions:
+  AttendanceDetails:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      employeeId:
+        type: "integer"
+      date:
+        type: "string"
+      status:
+        type: "string"
